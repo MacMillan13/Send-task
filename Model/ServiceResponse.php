@@ -10,22 +10,24 @@ namespace App\Model;
 
 /**
  * @property bool $status
- * @property string $result
+ * @property string $message
  */
 class ServiceResponse
 {
     public $status,
-        $result;
+        $message;
 
     /**
      * ServiceResponse constructor.
      *
      * @param bool $status
-     * @param string $result
+     * @param string $message
+     *
+     * @internal param string $result
      */
-    public function __construct(bool $status, string $result)
+    public function __construct(bool $status, string $message)
     {
         $this->status = $status;
-        $this->result = $result;
+        $this->message = $message;
     }
 }

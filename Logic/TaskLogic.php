@@ -6,6 +6,7 @@ use App\Logic\Task\LikeTask;
 use App\Logic\Task\SaveTask;
 use App\Logic\Task\AbstractTask;
 use App\Logic\Task\ViewTask;
+use App\Model\ServiceResponse;
 use App\Model\Task;
 use Exception;
 
@@ -37,16 +38,11 @@ class TaskLogic
              */
             $response = $taskDoer->do($task);
 
-            return [
-                'status' => $response->status,
-                'result' => $response->result
-            ];
+            return $response;
 
         } catch (Exception $exception) {
-            return [
-                'status' => false,
-                'error' => $exception->getMessage()
-            ];
+
+            return new ServiceResponse(false, $exception->getMessage());
         }
     }
 
@@ -58,7 +54,7 @@ class TaskLogic
      */
     private function getTaskDoer(int $type): AbstractTask
     {
-        switch ($type){
+        switch ($type) {
             case (SaveTask::TYPE):
                 $taskDoer = new SaveTask();
                 break;

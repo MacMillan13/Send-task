@@ -18,6 +18,7 @@ class MainController
     public function actionSendTask()
     {
         $post = $_POST;
+
         $taskLogic = new TaskLogic();
 
         $task = new Task($post['url'], $post['type'], $post['username'], $post['need']);

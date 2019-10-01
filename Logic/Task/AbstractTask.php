@@ -24,7 +24,7 @@ abstract class AbstractTask
     protected function checkTaskParams(Task $task, int $min)
     {
         if ($task->need < $min ) {
-            throw new Exception('Task need less then min');
+            throw new Exception('Task need less then min.');
         }
     }
 }
